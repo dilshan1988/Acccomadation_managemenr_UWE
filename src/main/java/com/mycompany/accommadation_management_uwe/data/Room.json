@@ -1,0 +1,67 @@
+{
+  "Rooms": [
+    {
+      "hallNumber": 2,
+      "roomNumber": 1,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 3,
+      "roomNumber": 2,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 4,
+      "roomNumber": 3,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 5,
+      "roomNumber": 4,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 6,
+      "roomNumber": 5,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 7,
+      "roomNumber": 6,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 8,
+      "roomNumber": 7,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 9,
+      "roomNumber": 8,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 10,
+      "roomNumber": 9,
+      "roomStatus": "unoccupied",
+      "roomCleanStatus": "clean",
+      "additionalProperties": {}
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "Halls": [
+    {
+      "hallNumber": 1,
+      "hallName": "hall 01",
+      "numberOfRooms": 201,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 2,
+      "hallName": "hall 02",
+      "numberOfRooms": 202,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 3,
+      "hallName": "hall 03",
+      "numberOfRooms": 203,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 4,
+      "hallName": "hall 04",
+      "numberOfRooms": 204,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 5,
+      "hallName": "hall 05",
+      "numberOfRooms": 205,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 6,
+      "hallName": "hall 06",
+      "numberOfRooms": 206,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 7,
+      "hallName": "hall 07",
+      "numberOfRooms": 207,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 8,
+      "hallName": "hall 08",
+      "numberOfRooms": 208,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 9,
+      "hallName": "hall 09",
+      "numberOfRooms": 209,
+      "wardenID": 5,
+      "additionalProperties": {}
+    },
+    {
+      "hallNumber": 10,
+      "hallName": "hall 010",
+      "numberOfRooms": 210,
+      "wardenID": 5,
+      "additionalProperties": {}
+    }
+  ]
+}

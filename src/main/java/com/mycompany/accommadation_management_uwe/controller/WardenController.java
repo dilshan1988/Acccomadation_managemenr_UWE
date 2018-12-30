@@ -1,5 +1,8 @@
 package com.mycompany.accommadation_management_uwe.controller;
 
+import com.mycompany.accommadation_management_uwe.pojo.Room;
+import com.mycompany.accommadation_management_uwe.pojo.RoomCleanStatus;
+import com.mycompany.accommadation_management_uwe.pojo.WorkOrder;
 import java.util.List;
 
 public class WardenController {

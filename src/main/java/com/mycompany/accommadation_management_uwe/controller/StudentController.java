@@ -1,5 +1,6 @@
 package com.mycompany.accommadation_management_uwe.controller;
 
+import com.mycompany.accommadation_management_uwe.pojo.Room;
 import java.util.List;
 
 public class StudentController {

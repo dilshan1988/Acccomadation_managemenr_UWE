@@ -1,59 +1,109 @@
 package com.mycompany.accommadation_management_uwe.pojo;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Lease {
 
-	private int leaseNumber;
+    @JsonProperty("leaseNumber")
+    private Integer leaseNumber;
+    @JsonProperty("startDate")
+    private Object startDate;
+    @JsonProperty("endDate")
+    private Object endDate;
+    @JsonProperty("rent")
+    private Object rent;
+    @JsonProperty("hallNumber")
+    private Integer hallNumber;
+    @JsonProperty("roomNumber")
+    private Integer roomNumber;
+    @JsonProperty("sudentNumber")
+    private Object sudentNumber;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	private Date startDate;
+    @JsonProperty("leaseNumber")
+    public Integer getLeaseNumber() {
+        return leaseNumber;
+    }
 
-	private Date endDate;
+    @JsonProperty("leaseNumber")
+    public void setLeaseNumber(Integer leaseNumber) {
+        this.leaseNumber = leaseNumber;
+    }
 
-	private float rent;
+    @JsonProperty("startDate")
+    public Object getStartDate() {
+        return startDate;
+    }
 
-	private int hallNumber;
+    @JsonProperty("startDate")
+    public void setStartDate(Object startDate) {
+        this.startDate = startDate;
+    }
 
-	private int roomNumber;
+    @JsonProperty("endDate")
+    public Object getEndDate() {
+        return endDate;
+    }
 
-	public int getLeaseNumber() {
-		return 0;
-	}
+    @JsonProperty("endDate")
+    public void setEndDate(Object endDate) {
+        this.endDate = endDate;
+    }
 
-	public Date getStartDate() {
-		return null;
-	}
+    @JsonProperty("rent")
+    public Object getRent() {
+        return rent;
+    }
 
-	public Date getEndDate() {
-		return null;
-	}
+    @JsonProperty("rent")
+    public void setRent(Object rent) {
+        this.rent = rent;
+    }
 
-	public void setLeaseNumber(int leaseNumber) {
-		this.leaseNumber = leaseNumber;
-	}
+    @JsonProperty("hallNumber")
+    public Integer getHallNumber() {
+        return hallNumber;
+    }
 
-	public void setStartDate(Date startDate) {
+    @JsonProperty("hallNumber")
+    public void setHallNumber(Integer hallNumber) {
+        this.hallNumber = hallNumber;
+    }
 
-	}
+    @JsonProperty("roomNumber")
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
 
-	public void setEndDate(Date endDate) {
+    @JsonProperty("roomNumber")
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-	}
+    @JsonProperty("sudentNumber")
+    public Object getStudentNumber() {
+        return sudentNumber;
+    }
 
-	public void setRent(float rent) {
+    @JsonProperty("sudentNumber")
+    public void setSudentNumber(Object sudentNumber) {
+        this.sudentNumber = sudentNumber;
+    }
 
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
 
-	public int getHallNumber() {
-		return 0;
-	}
-
-	public void setRoomNumber(int roomNumber) {
-
-	}
-
-	public void setHallNumber(int hallNumber) {
-
-	}
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
 
 }

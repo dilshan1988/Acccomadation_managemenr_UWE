@@ -16,25 +16,26 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mycompany.accommadation_management_uwe.pojo.Hall;
+import com.mycompany.accommadation_management_uwe.pojo.Lease;
 
 @Generated("org.jsonschema2pojo")
-public class HallDataWrapper {
-   @SerializedName("Halls")
+public class LeaseDataWrapper {
+   @SerializedName("Lease")
  @Expose
- private List<Hall> halls = new ArrayList<Hall>(); 
+ private List<Lease> leases = new ArrayList<Lease>(); 
    /**
  *
  * @return The Halls
  */
- public List<Hall> getHalls() {
-  return halls;
+ public List<Lease> getLeases() {
+  return leases;
  }
 /**
  *
- * @param halls
+ * @param leases
  * The Halls
  */
- public void setHalls(List<Hall> halls) {
-  this.halls = halls;
+ public void setLeases(List<Lease> leases) {
+  this.leases = leases;
  }
 }

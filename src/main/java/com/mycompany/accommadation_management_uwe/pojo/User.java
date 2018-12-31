@@ -38,4 +38,30 @@ public class User {
 		return null;
 	}
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public void setUserLevel(int userLevel) {
+        this.userLevel = userLevel;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+        
+        
+
 }

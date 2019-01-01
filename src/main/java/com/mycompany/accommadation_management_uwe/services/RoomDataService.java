@@ -156,7 +156,7 @@ public class RoomDataService {
             }
         }
 
-        throw (new UWEAccomException("data_exception", "Hall does not exist."));
+        throw (new UWEAccomException("data_exception", "Room does not exist."));
     }
 
     private boolean write(String strJson) {

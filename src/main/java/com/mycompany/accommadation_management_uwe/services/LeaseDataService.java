@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,6 +34,9 @@ public class LeaseDataService {
     LeaseDataWrapper leaseDataServiceWrapper = new LeaseDataWrapper();
     LeaseDataWrapper leaseDataServiceWrapperEx = new LeaseDataWrapper();
     String strJson;
+    HallDataService hds = new HallDataService();
+    RoomDataService rds = new RoomDataService();
+    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 
 //    String strJson = gson.toJson(leaseDataServiceWrapper);
     public LeaseDataService() throws IOException {
@@ -64,19 +69,22 @@ public class LeaseDataService {
                     throw (new UWEAccomException("data_exception", "Start date canot be empity."));
                 } else if (lease.getEndDate().equals("")) {
                     throw (new UWEAccomException("data_exception", "End date canot be empity."));
-                } else if (lease.getStudentNumber().equals("") || lease.getStudentNumber().equals(" ")) {
+                } else if (lease.getStudentNumber() == null || lease.getStudentNumber().equals("") || lease.getStudentNumber().equals(" ")) {
                     throw (new UWEAccomException("data_exception", "Student number canot be empity."));
                 } else if (lease.getLeaseNumber() == null) {
                     throw (new UWEAccomException("data_exception", "Lease number canot be empity."));
                 } else {
 
                     try {
-                        getLeaseByRoom(lease.getRoomNumber(), lease.getHallNumber());
-                        leaseDataServiceWrapper.getLeases().add(lease);
-                        strJson = gson.toJson(leaseDataServiceWrapper);
-                        return write(strJson);
+                        if (validation(lease)) {
+                            leaseDataServiceWrapper.getLeases().add(lease);
+                            strJson = gson.toJson(leaseDataServiceWrapper);
+                            return write(strJson);
+                        } else {
+                            throw (new UWEAccomException("data_exception", "Active Lease exsist."));
+                        }
                     } catch (UWEAccomException e) {
-                        throw (new UWEAccomException("data_exception", "Active Lease exsist."));
+                        throw (new UWEAccomException("data_exception", "Creating lease failed. " + e.getMessage()));
                     }
                 }
 
@@ -91,19 +99,16 @@ public class LeaseDataService {
                     throw (new UWEAccomException("data_exception", "Start date canot be empity."));
                 } else if (lease.getEndDate().equals("")) {
                     throw (new UWEAccomException("data_exception", "End date canot be empity."));
-                } else if (lease.getStudentNumber().equals("") || lease.getStudentNumber().equals(" ")) {
+                } else if (lease.getStudentNumber() == null || lease.getStudentNumber().equals("") || lease.getStudentNumber().equals(" ")) {
                     throw (new UWEAccomException("data_exception", "Student number canot be empity."));
                 } else if (lease.getLeaseNumber() == null) {
                     throw (new UWEAccomException("data_exception", "Lease number canot be empity."));
                 } else {
-                    try {
-                        getLeaseByRoom(lease.getRoomNumber(), lease.getHallNumber());
-                        leaseDataServiceWrapper.getLeases().add(lease);
-                        strJson = gson.toJson(leaseDataServiceWrapper);
-                        return write(strJson);
-                    } catch (UWEAccomException e) {
-                        throw (new UWEAccomException("data_exception", "Active Lease exsist."));
-                    }
+
+                    //getLeaseByRoom(lease.getRoomNumber(), lease.getHallNumber());
+                    leaseDataServiceWrapper.getLeases().add(lease);
+                    strJson = gson.toJson(leaseDataServiceWrapper);
+                    return write(strJson);
 
                 }
             }
@@ -113,7 +118,7 @@ public class LeaseDataService {
 
     }
 
-    public boolean updateLease(int leaseNumber, Lease lease) throws UWEAccomException {
+    public boolean update_Lease(int leaseNumber, Lease lease) throws UWEAccomException, ParseException {
 
         boolean isExist = false;
         if (lease != null) {
@@ -139,9 +144,12 @@ public class LeaseDataService {
                         } else {
 
                             for (Lease ls : leaseDataServiceWrapper.getLeases()) {
+
+                                Date exStartDate = formatter.parse(ls.getStartDate().toString());
+
                                 if (leaseNumber == ls.getLeaseNumber() && leaseNumber != lease.getLeaseNumber()) {
                                     throw (new UWEAccomException("data_exception", "Lease already number exist."));
-                                } else if (overlap((Date) ls.getStartDate(), (Date) ls.getEndDate(), (Date) lease.getStartDate(), (Date) lease.getEndDate())) {
+                                } else if (overlap((Date) formatter.parse(ls.getStartDate().toString()), formatter.parse(ls.getEndDate().toString()), (Date) formatter.parse(lease.getStartDate().toString()), (Date) formatter.parse(lease.getEndDate().toString()))) {
                                     if (ls.getRoomNumber() == lease.getRoomNumber() && ls.getHallNumber() == lease.getHallNumber()) {
                                         throw (new UWEAccomException("data_exception", "Active lease exist."));
                                     }
@@ -179,6 +187,51 @@ public class LeaseDataService {
 
     }
 
+    public boolean updateLease(int leaseNumber, Lease lease) throws UWEAccomException, ParseException {
+        boolean isUpdated = false;
+        Lease lease_ = getLease(leaseNumber);
+        if (lease.getHallNumber() == null) {
+            throw (new UWEAccomException("data_exception", "Hall numer canot be empity."));
+        } else if (lease.getRoomNumber() == null) {
+            throw (new UWEAccomException("data_exception", "Room number canot be empity."));
+        } else if (lease.getRent() == null) {
+            throw (new UWEAccomException("data_exception", "Rent canot be empity."));
+        } else if (lease.getStartDate() == null) {
+            throw (new UWEAccomException("data_exception", "Start date canot be empity."));
+        } else if (lease.getEndDate().equals("")) {
+            throw (new UWEAccomException("data_exception", "End date canot be empity."));
+        } else if (lease.getStudentNumber().equals("") || lease.getStudentNumber().equals(" ")) {
+            throw (new UWEAccomException("data_exception", "Student number canot be empity."));
+        } else if (lease.getLeaseNumber() == null) {
+            throw (new UWEAccomException("data_exception", "Lease number canot be empity."));
+        } else if (lease_.getRoomNumber() != lease.getRoomNumber() && lease_.getHallNumber() != lease.getHallNumber()) {
+
+            throw (new UWEAccomException("rule_exception", "Cancel the exsisting lease and create a new lease."));
+        } else {
+            for (Lease ls : leaseDataServiceWrapper.getLeases()) {
+
+                if (lease.getLeaseNumber() == ls.getLeaseNumber()) {
+                    lease_.setEndDate(formatter.format(((Date) formatter.parse(lease.getEndDate().toString()))));
+                    lease_.setHallNumber(lease.getHallNumber());
+                    lease_.setLeaseNumber(lease.getLeaseNumber());
+                    lease_.setRent(lease.getRent());
+                    lease_.setRoomNumber(lease.getRoomNumber());
+                    lease_.setStartDate(formatter.format(((Date) formatter.parse(lease.getStartDate().toString()))));
+                    lease_.setSudentNumber(lease.getStudentNumber());
+                    leaseDataServiceWrapper.getLeases().remove(ls);
+                    break;
+
+                }
+            }
+
+            leaseDataServiceWrapper.getLeases().add(lease_);
+            strJson = gson.toJson(leaseDataServiceWrapper);
+            isUpdated = write(strJson);
+
+        }
+        return isUpdated;
+    }
+
     private boolean overlap(Date start1, Date end1, Date start2, Date end2) {
         return start1.getTime() <= end2.getTime() && start2.getTime() <= end1.getTime();
     }
@@ -192,13 +245,13 @@ public class LeaseDataService {
 
     public boolean deleteLease(int id) throws UWEAccomException {
         for (Lease ls : leaseDataServiceWrapper.getLeases()) {
-            if (ls.getHallNumber() == id) {
+            if (ls.getLeaseNumber()== id) {
                 leaseDataServiceWrapper.getLeases().remove(ls);
                 strJson = gson.toJson(leaseDataServiceWrapper);
                 return write(strJson);
             }
         }
-        throw (new UWEAccomException("data_exception", "Hall does not exist."));
+        throw (new UWEAccomException("data_exception", "Lease does not exist."));
     }
 
     public Lease getLease(int id) throws UWEAccomException {
@@ -258,10 +311,30 @@ public class LeaseDataService {
             }
         }
     }
-    
-    private boolean validation(Lease lease){
+
+    private boolean validation(Lease lease) throws UWEAccomException {
         boolean validity = false;
-        
+        try {
+            Lease tempLease = getLeaseByRoom(lease.getRoomNumber(), lease.getHallNumber());
+            if (!overlap((Date) lease.getStartDate(), (Date) tempLease.getEndDate(), (Date) lease.getStartDate(), (Date) lease.getEndDate())) {
+                rds.getRoom(lease.getRoomNumber(), lease.getHallNumber());
+                validity = true;
+            } else {
+
+                validity = false;
+
+            }
+
+        } catch (UWEAccomException ex) {
+            try {
+                rds.getRoom(lease.getRoomNumber(), lease.getHallNumber());
+                validity = true;
+
+            } catch (UWEAccomException ex1) {
+                validity = false;
+                throw new UWEAccomException("data_exeption", ex1.getMessage());
+            }
+        }
         return validity;
     }
 

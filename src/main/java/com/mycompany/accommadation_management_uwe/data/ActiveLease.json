@@ -1,3 +1,74 @@
 {
-    
+  "Lease": [
+    {
+      "leaseNumber": 1,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 3,
+      "roomNumber": 2,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 2,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 4,
+      "roomNumber": 3,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 3,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 5,
+      "roomNumber": 4,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 4,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 6,
+      "roomNumber": 5,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 5,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 7,
+      "roomNumber": 6,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 6,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 8,
+      "roomNumber": 7,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 7,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 9,
+      "roomNumber": 8,
+      "sudentNumber": 100.0,
+      "additionalProperties": {}
+    }
+  ]
 }

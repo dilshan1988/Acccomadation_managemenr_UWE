@@ -22,20 +22,20 @@ public class TestDriverLease {
     public static void main(String[] args) {
         try {
             LeaseDataService lease = new LeaseDataService();
-            Lease ls = new Lease();
+           // Lease ls = new Lease();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-//            for (int i = 0; i <= 10; i++) {
-//                Lease ls = new Lease();
-//                ls.setLeaseNumber(i);
-//                ls.setHallNumber(2 + i);
-//                ls.setRoomNumber(1 + i);
-//                ls.setRent((Double) 450.00);
-//                ls.setEndDate(formatter.format(formatter.parse("01-DEC-2019")));
-//                ls.setStartDate(formatter.format(formatter.parse("01-JAN-2019")));
-//                ls.setSudentNumber(100);
-//                lease.addLease(ls);
-//
-//            }
+            for (int i = 11; i <= 20; i++) {
+                Lease ls = new Lease();
+                ls.setLeaseNumber(i);
+                ls.setHallNumber(2 + i-11);
+                ls.setRoomNumber(1 + i-11);
+                ls.setRent((Double)450.00);
+                ls.setEndDate(formatter.format(formatter.parse("01-DEC-2020")));
+                ls.setStartDate(formatter.format(formatter.parse("01-JAN-2020")));
+                ls.setSudentNumber("100");
+                lease.addLease(ls);
+
+            }
 
 //            ls.setLeaseNumber(0);
 //            ls.setHallNumber(2);
@@ -46,7 +46,7 @@ public class TestDriverLease {
 //            ls.setSudentNumber(100);
 //            
 //            lease.updateLease(0, ls);
-            lease.deleteLease(8);
+            //lease.deleteLease(8);
         } catch (IOException ex) {
             Logger.getLogger(TestDriverLease.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -54,6 +54,8 @@ public class TestDriverLease {
 //            Logger.getLogger(TestDriverLease.class.getName()).log(Level.SEVERE, null, ex);
 //        } 
         catch (UWEAccomException ex) {
+            Logger.getLogger(TestDriverLease.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(TestDriverLease.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

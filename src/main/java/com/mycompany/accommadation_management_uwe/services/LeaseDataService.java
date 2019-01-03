@@ -32,7 +32,7 @@ public class LeaseDataService {
     BufferedReader brEx = null;
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     LeaseDataWrapper leaseDataServiceWrapper = new LeaseDataWrapper();
-    LeaseDataWrapper leaseDataServiceWrapperEx = new LeaseDataWrapper();
+    //LeaseDataWrapper leaseDataServiceWrapperEx = new LeaseDataWrapper();
     String strJson;
     HallDataService hds = new HallDataService();
     RoomDataService rds = new RoomDataService();
@@ -43,8 +43,8 @@ public class LeaseDataService {
 
         br = new BufferedReader(new FileReader("/Users/dilshanjayatilake/NetBeansProjects/Accommadation_Management_UWE/src/main/java/com/mycompany/accommadation_management_uwe/data/ActiveLease.json"));
         leaseDataServiceWrapper = gson.fromJson(br, LeaseDataWrapper.class);
-        brEx = new BufferedReader(new FileReader("/Users/dilshanjayatilake/NetBeansProjects/Accommadation_Management_UWE/src/main/java/com/mycompany/accommadation_management_uwe/data/ExpieredLease.json"));
-        leaseDataServiceWrapperEx = gson.fromJson(brEx, LeaseDataWrapper.class);
+//        brEx = new BufferedReader(new FileReader("/Users/dilshanjayatilake/NetBeansProjects/Accommadation_Management_UWE/src/main/java/com/mycompany/accommadation_management_uwe/data/ExpieredLease.json"));
+//        leaseDataServiceWrapperEx = gson.fromJson(brEx, LeaseDataWrapper.class);
 
 //            writer.write(strJson);
     }
@@ -63,8 +63,6 @@ public class LeaseDataService {
                     throw (new UWEAccomException("data_exception", "Hall numer canot be empity."));
                 } else if (lease.getRoomNumber() == null) {
                     throw (new UWEAccomException("data_exception", "Room number canot be empity."));
-                } else if (lease.getRent() == null) {
-                    throw (new UWEAccomException("data_exception", "Rent canot be empity."));
                 } else if (lease.getStartDate() == null) {
                     throw (new UWEAccomException("data_exception", "Start date canot be empity."));
                 } else if (lease.getEndDate().equals("")) {
@@ -93,8 +91,6 @@ public class LeaseDataService {
                     throw (new UWEAccomException("data_exception", "Hall numer canot be empity."));
                 } else if (lease.getRoomNumber() == null) {
                     throw (new UWEAccomException("data_exception", "Room number canot be empity."));
-                } else if (lease.getRent() == null) {
-                    throw (new UWEAccomException("data_exception", "Rent canot be empity."));
                 } else if (lease.getStartDate() == null) {
                     throw (new UWEAccomException("data_exception", "Start date canot be empity."));
                 } else if (lease.getEndDate().equals("")) {
@@ -131,8 +127,6 @@ public class LeaseDataService {
                             throw (new UWEAccomException("data_exception", "Hall numer canot be empity."));
                         } else if (lease.getRoomNumber() == null) {
                             throw (new UWEAccomException("data_exception", "Room number canot be empity."));
-                        } else if (lease.getRent() == null) {
-                            throw (new UWEAccomException("data_exception", "Rent canot be empity."));
                         } else if (lease.getStartDate() == null) {
                             throw (new UWEAccomException("data_exception", "Start date canot be empity."));
                         } else if (lease.getEndDate().equals("")) {
@@ -194,8 +188,6 @@ public class LeaseDataService {
             throw (new UWEAccomException("data_exception", "Hall numer canot be empity."));
         } else if (lease.getRoomNumber() == null) {
             throw (new UWEAccomException("data_exception", "Room number canot be empity."));
-        } else if (lease.getRent() == null) {
-            throw (new UWEAccomException("data_exception", "Rent canot be empity."));
         } else if (lease.getStartDate() == null) {
             throw (new UWEAccomException("data_exception", "Start date canot be empity."));
         } else if (lease.getEndDate().equals("")) {
@@ -245,7 +237,7 @@ public class LeaseDataService {
 
     public boolean deleteLease(int id) throws UWEAccomException {
         for (Lease ls : leaseDataServiceWrapper.getLeases()) {
-            if (ls.getLeaseNumber()== id) {
+            if (ls.getLeaseNumber() == id) {
                 leaseDataServiceWrapper.getLeases().remove(ls);
                 strJson = gson.toJson(leaseDataServiceWrapper);
                 return write(strJson);
@@ -293,30 +285,17 @@ public class LeaseDataService {
         }
     }
 
-    private boolean writeEx(String strJson) {
-        try {
-            writer = new FileWriter("/Users/dilshanjayatilake/NetBeansProjects/Accommadation_Management_UWE/src/main/java/com/mycompany/accommadation_management_uwe/data/ExpieredLease.json");
-            writer.write(strJson);
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(LeaseDataService.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
+   
     private boolean validation(Lease lease) throws UWEAccomException {
         boolean validity = false;
         try {
             Lease tempLease = getLeaseByRoom(lease.getRoomNumber(), lease.getHallNumber());
-            if (!overlap((Date) lease.getStartDate(), (Date) tempLease.getEndDate(), (Date) lease.getStartDate(), (Date) lease.getEndDate())) {
+            //( formatter.parse((lease.getStartDate())+""), formatter.parse((tempLease.getEndDate())+""), formatter.parse((lease.getStartDate())+""),  formatter.parse((lease.getEndDate())+"")))
+            Date start1 = formatter.parse((tempLease.getStartDate()).toString());
+            Date end1 = formatter.parse((tempLease.getEndDate()).toString());
+            Date start2 = formatter.parse((lease.getStartDate()).toString());
+            Date end2 = formatter.parse((lease.getEndDate()).toString());
+            if (!overlap(start1,end1,start2,end2)) {
                 rds.getRoom(lease.getRoomNumber(), lease.getHallNumber());
                 validity = true;
             } else {
@@ -334,6 +313,8 @@ public class LeaseDataService {
                 validity = false;
                 throw new UWEAccomException("data_exeption", ex1.getMessage());
             }
+        } catch (ParseException ex) {
+            Logger.getLogger(LeaseDataService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return validity;
     }

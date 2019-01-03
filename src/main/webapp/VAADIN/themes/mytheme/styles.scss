@@ -7,5 +7,9 @@
 .mytheme {
   @include addons;
   @include mytheme;
+  
+  .v-loginForm{
+      padding-left: 33.3%;
+  }
 
 }

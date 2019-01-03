@@ -1,43 +1,95 @@
 package com.mycompany.accommadation_management_uwe.pojo;
 
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "workOrderID",
+    "hallNumber",
+    "roomNumber",
+    "description",
+    "status"
+})
+
 public class WorkOrder {
 
-	private int workOrderID;
+    @JsonProperty("workOrderID")
+    private int workOrderID;
+    @JsonProperty("hallNumber")
+    private int hallNumber;
+    @JsonProperty("roomNumber")
+    private int roomNumber;
+    @JsonProperty("description")
+    private Object description;
+    @JsonProperty("status")
+    private Object status;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	private int hallNumber;
+    @JsonProperty("workOrderID")
+    public int getWorkOrderID() {
+        return workOrderID;
+    }
 
-	private int roomNumber;
+    @JsonProperty("workOrderID")
+    public void setWorkOrderID(int workOrderID) {
+        this.workOrderID = workOrderID;
+    }
 
-	private String description;
+    @JsonProperty("hallNumber")
+    public int getHallNumber() {
+        return hallNumber;
+    }
 
-	private WorkOrderStatus status = WorkOrderStatus.open;
+    @JsonProperty("hallNumber")
+    public void setHallNumber(int hallNumber) {
+        this.hallNumber = hallNumber;
+    }
 
-	public int getWorkOrderID() {
-		return 0;
-	}
+    @JsonProperty("roomNumber")
+    public int getRoomNumber() {
+        return roomNumber;
+    }
 
-	public int getHallNumber() {
-		return 0;
-	}
+    @JsonProperty("roomNumber")
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
-	public int getStatus() {
-		return 0;
-	}
+    @JsonProperty("description")
+    public Object getDescription() {
+        return description;
+    }
 
-	public void setWorkOrderID(int workOrderID) {
+    @JsonProperty("description")
+    public void setDescription(Object description) {
+        this.description = description;
+    }
 
-	}
+    @JsonProperty("status")
+    public Object getStatus() {
+        return status;
+    }
 
-	public void setHallNumber(int hallNumber) {
+    @JsonProperty("status")
+    public void setStatus(Object status) {
+        this.status = status;
+    }
 
-	}
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
 
-	public void setRoomNumber(int roomNumber) {
-
-	}
-
-	public void setWorkOrderStatus(WorkOrderStatus workOrderStatus) {
-
-	}
-
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
 }

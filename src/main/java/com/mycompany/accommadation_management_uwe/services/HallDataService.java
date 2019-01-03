@@ -16,13 +16,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 public class HallDataService {
 
@@ -51,11 +48,11 @@ public class HallDataService {
                     }
                 }
                 if (hall.getHallName().equals("") || hall.getHallName().equals(" ")) {
-                    throw (new UWEAccomException("data_exception", "Hall name canot be empity."));
+                    throw (new UWEAccomException("data_exception", "Hall name cannot be empity."));
                 } else if (hall.getHallNumber().equals("") || hall.getHallNumber().equals(" ")) {
-                    throw (new UWEAccomException("data_exception", "Hall number canot be empity."));
+                    throw (new UWEAccomException("data_exception", "Hall number cannot be empity."));
                 } else if (hall.getNumberOfRooms().equals("") || hall.getNumberOfRooms().equals(" ")) {
-                    throw (new UWEAccomException("data_exception", "Number of rooms canot be empity."));
+                    throw (new UWEAccomException("data_exception", "Number of rooms cannot be empity."));
                 } else {
                     hallDataServiceWrapper.getHalls().add(hall);
                     strJson = gson.toJson(hallDataServiceWrapper);
@@ -76,7 +73,7 @@ public class HallDataService {
                 }
             }
         } else {
-            throw (new UWEAccomException("data_exception", "Hall canot be empity."));
+            throw (new UWEAccomException("data_exception", "Hall cannot be empity."));
         }
 
     }

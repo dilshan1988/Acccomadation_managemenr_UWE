@@ -34,5 +34,8 @@
 @mixin mytheme {
   @include valo;
 
+  .v-loginForm{
+      padding-left: 33.3%;
+  }
   // Insert your own theme rules here
 }

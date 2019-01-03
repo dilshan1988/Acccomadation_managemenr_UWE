@@ -69,6 +69,106 @@
       "roomNumber": 8,
       "sudentNumber": 100.0,
       "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 10,
+      "startDate": "01-Jan-2019",
+      "endDate": "01-Dec-2019",
+      "rent": 450.0,
+      "hallNumber": 2,
+      "roomNumber": 1,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 11,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 2,
+      "roomNumber": 1,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 12,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 3,
+      "roomNumber": 2,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 13,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 4,
+      "roomNumber": 3,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 14,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 5,
+      "roomNumber": 4,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 15,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 6,
+      "roomNumber": 5,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 16,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 7,
+      "roomNumber": 6,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 17,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 8,
+      "roomNumber": 7,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 18,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 9,
+      "roomNumber": 8,
+      "sudentNumber": "100",
+      "additionalProperties": {}
+    },
+    {
+      "leaseNumber": 19,
+      "startDate": "01-Jan-2020",
+      "endDate": "01-Dec-2020",
+      "rent": 450.0,
+      "hallNumber": 10,
+      "roomNumber": 9,
+      "sudentNumber": "100",
+      "additionalProperties": {}
     }
   ]
 }
